@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title> Graph representation and graph of possibility</title>
+    </head>
+<body>
+	<canvas style="width: 1712px; height: 1296px;" height="1296" width="1712" id="canvas_visualisation"> </canvas>
+	<script src="three.min.js"></script>
+	<script src="TrackballControls.js"></script>
+	<script src="Lut.js"></script>
+
+	<script src='dat.gui.min.js'></script>
+
+	<script src="jscolor.js"></script>
+   	<script src="geology.js"></script>
+
+
+   	<script src="Surface.js"></script>
+
+	<script src="L3.js"></script>
+	<script src="L4.js"></script>
+	<script src="L5.js"></script>
+	<script src="L6.js"></script>
+
+	<!-- First number is number of rules, second is number of lines --> 
+	<script src="Fig6b_2_3.js"></script>
+	<script src="Fig6b_3_3.js"></script>
+	<script src="Fig6b_4_3.js"></script>
+	<script src="Fig6b_5_3.js"></script>
+
+	<script src="Fig6b_2_4.js"></script>
+	<script src="Fig6b_3_4.js"></script>
+	<script src="Fig6b_4_4.js"></script>
+	<script src="Fig6b_5_4.js"></script>
+
+	<script src="Fig6b_2_5.js"></script>
+	<script src="Fig6b_3_5.js"></script>
+	<script src="Fig6b_4_5.js"></script>
+	<script src="Fig6b_5_5.js"></script>
+
+	<script src="Fig6b_2_6.js"></script>
+	<script src="Fig6b_3_6.js"></script>
+	<script src="Fig6b_4_6.js"></script>
+	<script src="Fig6b_5_6.js"></script>
+
+
+
+<script> 
+
+var cur_index = 0 ;
+var ov = new ObjectViewer("canvas_visualisation") ; 
+ov.prepare(); 
+
+SURFACES = [S_11, S_12, S_13, S_14, S_15, S_16, S_17, S_18, S_19, 
+	  S_20, S_21, S_22, S_23, S_24, S_25, S_26, S_27, S_28, S_29, 
+	  S_30, S_31, S_32, S_33, S_34, S_35, S_36, S_37, S_38]
+
+COLORS = [0xffcaca, 0xcacaff, 0xcaffca,  0xcacaca, 0xffffca, 0xffcaff,  0xcaffff, 0xffffff, 0x0faff0, 0xe5e5cf,
+	0xffcaca, 0xcacaff, 0xcaffca,  0xcacaca, 0xffffca, 0xffcaff,  0xcaffff, 0xffffff, 0x0faff0, 0xe5e5cf,
+	0xffcaca, 0xcacaff, 0xcaffca,  0xcacaca, 0xffffca, 0xffcaff,  0xcaffff, 0xffffff, 0x0faff0, 0xe5e5cf]
+
+GROUPS = []
+
+var groupSurf = new THREE.Group();
+for (var s_ind=0; s_ind < SURFACES.length; ++s_ind  ){
+	groupSurf.add(ov.append_surface(SURFACES[s_ind], COLORS[s_ind]))
+}
+ov.scene.add(groupSurf)
+
+
+
+line3 = ov.append_lines(L_3, 0x000000);
+line4 = ov.append_lines(L_4, 0x000000);
+line4.visible=false;
+line5 = ov.append_lines(L_5, 0x000000);
+line5.visible=false;
+line6 = ov.append_lines(L_6, 0x000000);
+line6.visible=false;
+
+pts_coord =  [Barycent_2_3, Barycent_2_4, Barycent_2_5, Barycent_2_6]
+
+pts = []
+for (var s_ind=0; s_ind < pts_coord.length; ++s_ind  ){
+		p = ov.append_points(pts_coord[s_ind], 0x000000, "points");
+		p.visible=false
+		pts.push(p);
+}
+
+ref_coord = [Ref_2_3, Ref_2_4, Ref_2_5, Ref_2_6]
+			
+
+grA_coord = [
+			 [GraphA_2_3, GraphA_2_4, GraphA_2_5, GraphA_2_6],
+			 [GraphA_3_3, GraphA_3_4, GraphA_3_5, GraphA_3_6],
+			 [GraphA_4_3, GraphA_4_4, GraphA_4_5, GraphA_4_6],
+			 [GraphA_5_3, GraphA_5_4, GraphA_5_5, GraphA_5_6]
+			]
+
+
+grB_coord = [
+			 [GraphB_2_3, GraphB_2_4, GraphB_2_5, GraphB_2_6],
+			 [GraphB_3_3, GraphB_3_4, GraphB_3_5, GraphB_3_6],
+			 [GraphB_4_3, GraphB_4_4, GraphB_4_5, GraphB_4_6],
+			 [GraphB_5_3, GraphB_5_4, GraphB_5_5, GraphB_5_6]
+			]
+
+graphA = []
+graphB = []
+ref    = []
+for (var s_ind=0; s_ind < grA_coord.length; ++s_ind  ){
+	graphA.push([]);
+	graphB.push([]);
+
+	r = ov.append_lines(ref_coord[s_ind], 0x00ff00);
+	r.visible=false
+	ref.push(r);
+
+	for (var p_ind=0; p_ind < grA_coord[s_ind].length; ++p_ind  ){
+		g = ov.append_lines(grA_coord[s_ind][p_ind], 0xff0000);
+		g.visible=false
+		graphA[s_ind].push(g);
+
+		g = ov.append_lines(grB_coord[s_ind][p_ind], 0x0000ff);
+		g.visible=false
+		graphB[s_ind].push(g);
+
+
+	}	
+}
+
+
+ov.set_camera_place();
+
+
+
+
+
+
+var gui = new dat.GUI();
+
+
+
+
+var GuiManager = function() {
+  this.showSurfaces = true;
+
+  this.showNodes     = true;
+  this.showGraphFamA = true;
+  this.showGraphFamB = false;
+  this.showRef       = false;
+
+  this.nbLines = 3
+  this.nbRules = 2
+
+};
+
+
+
+var gui_man = new GuiManager()
+
+var update_viewer = function() {
+
+	console.log("update")
+	groupSurf.visible 				= 	gui_man.showSurfaces
+
+	line3.visible = false;
+	line4.visible = false;
+	line5.visible = false;
+	line6.visible = false;
+
+	if(gui_man.nbLines == 3){line3.visible=true;}
+	else if(gui_man.nbLines == 4){line4.visible=true;}
+	else if(gui_man.nbLines == 5){line5.visible=true;}
+	else if(gui_man.nbLines == 6){line6.visible=true;}
+	
+	pts[0].visible = false;
+	pts[1].visible = false;
+	pts[2].visible = false;
+	pts[3].visible = false;
+
+	if(gui_man.showNodes == true) {
+		pts[gui_man.nbLines - 3].visible = true;
+	}	
+
+	for (var s_ind=0; s_ind < grA_coord.length; ++s_ind  ){
+	for (var p_ind=0; p_ind < grA_coord[s_ind].length; ++p_ind  ){
+		graphA[s_ind][p_ind].visible = false
+		graphB[s_ind][p_ind].visible = false
+		ref[p_ind].visible    = false
+	}}
+
+
+	if(gui_man.showGraphFamA == true) {
+		graphA[gui_man.nbRules - 2][gui_man.nbLines - 3].visible = true
+	}	
+
+	if(gui_man.showGraphFamB == true) {
+		graphB[gui_man.nbRules - 2][gui_man.nbLines - 3].visible = true
+	}	
+	if(gui_man.showRef == true) {
+		ref[gui_man.nbLines - 3].visible = true
+	}	
+
+
+	
+}
+
+update_viewer()
+
+gui.add(gui_man, 'showSurfaces').onChange(function(value) {
+	groupSurf.visible=value
+});
+
+gui.add(gui_man, 'nbLines', 3, 6).step(1).onChange(function(value) {
+	update_viewer()
+
+});
+gui.add(gui_man, 'nbRules', 2, 5).step(1).onChange(function(value) {
+	update_viewer()
+});
+
+
+
+gui.add(gui_man, 'showNodes').onChange(function(value) {
+	update_viewer()
+});
+
+gui.add(gui_man, 'showGraphFamA').onChange(function(value) {
+	update_viewer()
+});
+gui.add(gui_man, 'showGraphFamB').onChange(function(value) {
+	update_viewer()
+});
+
+gui.add(gui_man, 'showRef').onChange(function(value) {
+	update_viewer()
+});
+
+
+
+
+
+var show=function render(){ov.do_render(render);};
+show();
+</script>   
+</body></html>

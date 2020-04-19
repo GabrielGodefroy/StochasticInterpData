@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="G. Godefroy, G. Caumon, F. Bonneau &amp; G. Laurent" />
+  <title>Description of the data associated with the article Multi-scenario interpretations from sparse fault evidence using graph theory and geological rules</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Description of the data associated with the article <em>Multi-scenario interpretations from sparse fault evidence using graph theory and geological rules</em></h1>
+<p class="author">G. Godefroy, G. Caumon, F. Bonneau &amp; G. Laurent</p>
+</header>
+<style>
+    body{
+        margin:1em auto;
+        max-width:55em;
+        padding:0 .62em;
+        font:1.2em/1.62 sans-serif;
+    }
+    h1,h2,h3 {
+        line-height:1.2;
+    }
+    @media print{
+        body{
+            max-width:none
+        }
+    }
+    img {
+        max-width: 35em
+    }
+</style>
+<h2 id="corresponding-article">Corresponding article</h2>
+<p>Godefroy, G., Caumon, G., Bonneau, F &amp; Laurent, G., (2020). <strong>Multi-scenario interpretations from sparse fault evidence using graph theory and geological rules</strong>. <em>submitted to JGR: Solid Earth</em>.</p>
+<pre><code>@article{Godefroy2020submJGR,
+ author = {Godefroy, Gabriel and Caumon, Guillaume and Laurent, Gautier and Bonneau, François},
+ journal = {submitted to JGR: Solid Earth},
+ title = {Multi-scenario interpretations from sparse fault evidence using graph theory and geological rules},
+ year = {2020}
+}</code></pre>
+<h2 id="the-seismic-data-is-not-available-but-the-seismic-interpretation-is">The seismic data is NOT available but the seismic interpretation IS</h2>
+<p>The seismic data used in this article is the property of <em>PGS Investigação Petrolı́fera Limitada</em> and cannot be shared along with this article. However, the seismic interpretation that we performed is provided (see Fig5). It can be easily visualized in the form of an interactive HTML page. We also provide the synthetic fault sticks used as input for the numerical experiments (Fig6 to Fig9).</p>
+<p>The seismic interpretation was performed using SKUA-GOCAD. Software corresponding to this paper is available to sponsors in the RING software package FaultMod2. We provide the scenarios generated in the form of text files, along with Python scripts.</p>
+<p>The Python script used to generate the Table1 is also provided.</p>
+<h2 id="table-3">Table 3</h2>
+<figure>
+<img src="FigPNG/Table3.png" alt="" /><figcaption>Number of pieces of fault evidences, corresponding simulation times and Bell number for different number of synthetic seismic lines</figcaption>
+</figure>
+<ul>
+<li>Python script used to generate the Bell numbers:
+<ul>
+<li><a href="Table3/bell_number.py.txt">bell_number.py</a></li>
+</ul></li>
+<li>and the numerical values
+<ul>
+<li><a href="Table3/bell_number.txt">bell_number.txt</a></li>
+</ul></li>
+</ul>
+<h2 id="figure-4">Figure 4</h2>
+<p><a href="Fig4"></a></p>
+<figure>
+<img src="FigPNG/Fig4.png" alt="" /><figcaption>(a) The generated interpretation scenarios are represented by association graphs. (b) For each clique, a fault surface can be interpolated using the geometry of the fault evidence.</figcaption>
+</figure>
+<ul>
+<li>3D viewer with different scenarios:
+<ul>
+<li><a href="Fig4/Fig4.html">Fig4.html</a></li>
+</ul></li>
+<li>The coordinates
+<ul>
+<li>of the synthetic seismic interpretation can be find here:
+<ul>
+<li><a href="Fig4/lines.js">Synthetic seismic interpretation</a></li>
+</ul></li>
+<li>of the surfaces of the corresponding scenarios can be find here:
+<ul>
+<li><a href="Fig4/surf0.js">Scenario 0</a></li>
+<li><a href="Fig4/surf2.js">Scenario 2</a></li>
+<li><a href="Fig4/surf5.js">Scenario 5</a></li>
+<li><a href="Fig4/surf6.js">Scenario 6</a></li>
+<li><a href="Fig4/surf8.js">Scenario 8</a></li>
+<li><a href="Fig4/surf12.js">Scenario 12</a></li>
+<li><a href="Fig4/surf14.js">Scenario 14</a></li>
+<li><a href="Fig4/surf17.js">Scenario 17</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>The structural models are conceptual; there is no scale.</p>
+<h2 id="figure-5">Figure 5</h2>
+<figure>
+<img src="FigPNG/Fig5.png" alt="" /><figcaption>Reference structural model located in the Santos Basin, offshore Brazil. (a) Available reflection seismic data (courtesy of PGS). (b) Reference fault network. (c, d) Generated interpreted synthetic parallel two-dimensional seismic lines.</figcaption>
+</figure>
+<h3 id="d-viewer">3D viewer</h3>
+<ul>
+<li>3D viewer with the used fault surfaces and generated synthetic fault sticks (coordinates not at scale):
+<ul>
+<li><a href="Fig5/Fig5.html">Fig5.html</a></li>
+<li>the corresponding surfaces can be found as <em>.js</em> files:
+<ul>
+<li>e.g., <a href="Fig5/L3.js">3 seismic lines’ case</a></li>
+<li>e.g., <a href="Fig5/S11.js">fault F52</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="coordinates-for-the-fault-surfaces-and-synthetic-interpretation-at-scale">Coordinates for the fault surfaces and synthetic interpretation (at scale)</h3>
+<p>The coordinates of the fault surfaces and synthetic fault sticks are also provided.</p>
+<h3 id="fault-surfaces">Fault surfaces</h3>
+<p>The text files containing the triangulated fault surfaces is format as follow:</p>
+<pre><code> * First line _P T 0 0 0_:
+    * _P_ is the number of points
+    * _T_ is the number of triangles
+ * The _P_ following lines contains the _x y z_ coordinates of the points
+    * _x_ and _y_ are expressed in meters
+    * _z_ is expressed in milliseconds
+ * The _T_ last lines contains the description of each triangle
+    * indices refers to the indices (starting at 1) of the _X_ first lines</code></pre>
+<p>Link to the files:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="Fig5/faultsurfaces/avs_Fs01_fault.avs">Fs01</a></td>
+<td><a href="Fig5/faultsurfaces/avs_Fs02_fault.avs">Fs02</a></td>
+<td><a href="Fig5/faultsurfaces/avs_Fs03_fault.avs">Fs03</a></td>
+<td><a href="Fig5/faultsurfaces/avs_Fs04_fault.avs">Fs04</a></td>
+</tr>
+<tr class="even">
+<td><a href="Fig5/faultsurfaces/avs_Fs05_fault.avs">Fs05</a></td>
+<td><a href="Fig5/faultsurfaces/avs_Fs06_fault.avs">Fs06</a></td>
+<td><a href="Fig5/faultsurfaces/avs_Fs07_fault.avs">Fs07</a></td>
+<td><a href="Fig5/faultsurfaces/avs_Fs08_fault.avs">Fs08</a></td>
+</tr>
+<tr class="odd">
+<td><a href="Fig5/faultsurfaces/avs_F57_fault.avs">F57</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F58_fault.avs">F58</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F59_fault.avs">F59</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F60_fault.avs">F60</a></td>
+</tr>
+<tr class="even">
+<td><a href="Fig5/faultsurfaces/avs_F61_fault.avs">F61</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F62_fault.avs">F62</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F63_fault.avs">F63</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F64_fault.avs">F64</a></td>
+</tr>
+<tr class="odd">
+<td><a href="Fig5/faultsurfaces/avs_F65_fault.avs">F65</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F66_fault.avs">F66</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F67_fault.avs">F67</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F68_fault.avs">F68</a></td>
+</tr>
+<tr class="even">
+<td><a href="Fig5/faultsurfaces/avs_F69bis_fault.avs">F69bis</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F69_fault.avs">F69</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F70_fault.avs">F70</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F71_fault.avs">F71</a></td>
+</tr>
+<tr class="odd">
+<td><a href="Fig5/faultsurfaces/avs_F72bis_fault.avs">F72bis</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F72_fault.avs">F72</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F72ter_fault.avs">F72ter</a></td>
+<td><a href="Fig5/faultsurfaces/avs_F73_fault.avs">F73</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="synthetic-interpretation">Synthetic interpretation</h3>
+<ul>
+<li><a href="Fig5/seismictraces/From3Lines.txt">Synthetic interpretation from 3 lines</a></li>
+<li><a href="Fig5/seismictraces/From4Lines.txt">Synthetic interpretation from 4 lines</a></li>
+<li><a href="Fig5/seismictraces/From5Lines.txt">Synthetic interpretation from 5 lines</a></li>
+<li><a href="Fig5/seismictraces/From6Lines.txt">Synthetic interpretation from 6 lines</a></li>
+</ul>
+<p>Note: the <em>z</em> coordinates is in milliseconds.</p>
+<h2 id="figure-6">Figure 6</h2>
+<figure>
+<img src="FigPNG/Fig6.png" alt="" /><figcaption>Number of edges per fault family (φ) in the graphs of all possible associations for evidence extracted along (a) 4 seismic lines, and (b) 6 seismic lines.</figcaption>
+</figure>
+<p>Find below a 3D viewer with the graph of</p>
+<ul>
+<li><a href="Fig6/html/Fig6.html">Fig6.html</a></li>
+</ul>
+<p>The corresponding association weights are given in the text files located <a href="Fig6/raw_graph">here</a></p>
+</body>
+</html>
